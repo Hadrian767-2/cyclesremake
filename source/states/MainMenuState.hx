@@ -27,10 +27,15 @@ class MainMenuState extends MusicBeatState
 	var optionShit:Array<String> = [
 		'story_mode',
 		'freeplay',
-		#if ACHIEVEMENTS_ALLOWED 'achievements' #else null #end
+		#if MODS_ALLOWED 'mods', #end
 		'credits'
-		'options'
 	];
+
+	var leftOption:String = #if ACHIEVEMENTS_ALLOWED 'achievements' #else null #end;
+	var rightOption:String = 'options';
+
+	var magenta:FlxSprite;
+	var camFollow:FlxObject;
 
 	override function create()
 	{
@@ -107,7 +112,7 @@ class MainMenuState extends MusicBeatState
 		#end
 		#end
 
-		addTouchPad('UP_DOWN', 'A_B');
+		addTouchPad('NONE', 'E');
 
 		super.create();
 
